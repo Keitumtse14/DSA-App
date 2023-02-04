@@ -15,9 +15,11 @@ function Stack() {
             <li> Pop, which removes the most recently added element that was not yet removed.</li>
           </ul>
         </div>
-        <Link to="/"> <img className='mt-6 hover:scale-[1.3] hover:duration-150' src={BackButton} alt="My SVG" width={40} />
-        </Link>
-      </div>
+        <Link
+          to="/"
+          className="w-10 inline-block">
+          <img className='mt-6 hover:scale-[1.3] hover:duration-150' src={BackButton} alt="My SVG" width={40} />
+        </Link>      </div>
     </div>
   )
 }
