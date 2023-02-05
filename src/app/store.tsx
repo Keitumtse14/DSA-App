@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import completedDataStructureSlice from '../features/completedDataStructure/completedDataStructure'
+import completedDataStructureSlice from '../features/completedDataStructure/completedDataStructureSlice'
 export const store = configureStore({
   reducer: {
     completedDataStructureSlice

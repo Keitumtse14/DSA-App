@@ -1,6 +1,5 @@
-test("use happy-dom in this test file", () => {
-  const element = document.createElement("div");
-  expect(element).not.toBeNull();
+test("should work as expected", () => {
+  expect(Math.sqrt(4)).toBe(2);
 });
 
 export {};

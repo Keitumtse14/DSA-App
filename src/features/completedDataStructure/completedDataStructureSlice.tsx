@@ -8,7 +8,7 @@ const initialState: CompletedDataStructure = {
   value: false,
 }
 
-export const completedDataStructure = createSlice({
+export const completedDataStructureSlice = createSlice({
   name: 'completed state',
   initialState,
   reducers: {
@@ -23,6 +23,6 @@ export const completedDataStructure = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { completed } = completedDataStructure.actions
+export const { completed } = completedDataStructureSlice.actions
 
-export default completedDataStructure.reducer
+export default completedDataStructureSlice.reducer
