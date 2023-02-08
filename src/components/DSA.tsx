@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import checkedButton from '../assets/checked-button.svg'
+import CheckedButton from '../assets/checked-button'
 import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../app/store'
 import { completed } from '../features/completedDataStructure/completedDataStructureSlice'
@@ -14,11 +14,7 @@ function DSA({ dataStructure, link }: any) {
         <button
           className="w-8 flex justify-self-end relative left-10 bottom-9 z-10"
           onClick={() => dispatch(completed())}>
-          <img
-            className=" mw-30"
-            src={checkedButton}
-            alt="Check mark button"
-            width="30" />
+          <CheckedButton />
         </button>
         {dataStructure}
       </Link>
