@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import BackButton from '../assets/back-button.svg';
+import CheckedButton from '../assets/checked-button';
 
 function Stack() {
 
@@ -8,6 +9,9 @@ function Stack() {
 
       <div className="dsa-card">
         <h1 className="my-[1em] ">Stack</h1>
+        <button className="w-8 flex justify-self-end relative right-3 bottom-[5.8rem] hover:scale-125">
+          <CheckedButton />
+        </button>
         <div className="max-w-[47ch]">
           <ul>
             <li className="mb-[1em]">  A stack is an abstract data type that serves as a collection of elements, with two main operations:</li>
