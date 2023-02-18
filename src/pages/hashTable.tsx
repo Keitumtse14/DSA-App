@@ -12,7 +12,7 @@ function HashTable() {
         <button className="w-8 flex justify-self-end relative right-3 bottom-[5.8rem] hover:scale-125">
           <CheckedButton />
         </button>
-        <p> A hash table, also known as hash map, is a data structure that implements an associative array or dictionary. It is an abstract data type that maps keys to values.[2] A hash table uses a hash function to compute an index, also called a hash code, into an array of buckets or slots, from which the desired value can be found. During lookup, the key is hashed and the resulting hash indicates where the corresponding value is stored.</p>
+        <p> A hash table, also known as hash map, is a data structure that implements an associative array or dictionary. It is an abstract data type that maps keys to values. A hash table uses a hash function to compute an index, also called a hash code, into an array of buckets or slots, from which the desired value can be found. During lookup, the key is hashed and the resulting hash indicates where the corresponding value is stored.</p>
         <Link
           to="/"
           className="w-10 inline-block">
