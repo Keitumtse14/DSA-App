@@ -3,6 +3,7 @@ import BackButton from '../assets/back-button.svg';
 import CheckedButton from '../assets/checked-button';
 
 function Stack() {
+
   return (
     <div className="dsa-card px-4">
       <div className="dsa-card">

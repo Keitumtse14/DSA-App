@@ -1,14 +1,9 @@
-import { FC } from 'react';
-import { useQueryClient } from '@tanstack/react-query';
+import { useState } from 'react';
 
-const CheckedButton: FC = () => {
-  const queryClient = useQueryClient();
 
-  const handleClick = () => {
-    queryClient.setQueryData<boolean>(['isChecked'], (prevChecked) => !prevChecked);
-  };
 
-  const isChecked = queryClient.getQueryData<boolean>(['isChecked']) ?? false;
+const CheckedButton = () => {
+  const [isChecked, setIsChecked] = useState(false);
 
   return (
     <svg
@@ -16,7 +11,7 @@ const CheckedButton: FC = () => {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       stroke={isChecked ? 'white' : 'black'}
-      onClick={handleClick}
+      onClick={() => setIsChecked(!isChecked)}
       style={{ cursor: 'pointer' }}
     >
       <circle cx="32" cy="32" r="24" />
