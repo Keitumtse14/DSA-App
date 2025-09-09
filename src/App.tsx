@@ -2,9 +2,6 @@ import './styles/index.css';
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Route, Routes, } from "react-router-dom";
 
-
-
-
 const Grid = lazy(() => import('./components/Grid'));
 const Stack = lazy(() => import('./pages/stack'));
 const BinarySearchTree = lazy(() => import('./pages/binarySearchTree'));

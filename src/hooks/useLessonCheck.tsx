@@ -1,18 +1,19 @@
-// useLessonCheck.ts
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export function useLessonCheck(lessonKey: string) {
     const queryClient = useQueryClient();
 
-    // Instead of forcing queryFn -> false, just let it read cached data
     const { data: checked } = useQuery({
         queryKey: ["lesson", lessonKey, "checked"],
-        // Provide initial value so it doesn’t throw undefined
+        // Load from cache OR initial false if nothing in storage
         initialData: false,
+        // Don’t fetch — just trust what’s in cache/storage
         queryFn: async () => {
-            // This only runs if nothing is in cache (first visit)
-            return false;
+            return queryClient.getQueryData<boolean>(["lesson", lessonKey, "checked"]) ?? false;
         },
+        // Important: don’t let React Query auto-refetch this
+        staleTime: Infinity,
+        gcTime: Infinity,
     });
 
     const toggle = () => {

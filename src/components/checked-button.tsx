@@ -5,12 +5,12 @@ export default function useLessonCheck(lessonKey: string) {
 
   const { data: checked } = useQuery({
     queryKey: ["lesson", lessonKey, "checked"],
-    initialData: false, // first load
-    queryFn: async () => false, // only runs if nothing persisted
+    initialData: false,
+    queryFn: async () => false,
   });
 
   const toggle = () => {
-    queryClient.setQueryData(["lesson", lessonKey, "checked"], !checked);
+    queryClient.setQueryData(["lesson", lessonKey, "checked"], (prev: boolean | undefined) => !prev);
   };
 
   return { checked: checked ?? false, toggle };
