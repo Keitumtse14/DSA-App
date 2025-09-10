@@ -1,4 +1,5 @@
 import { Suspense, lazy } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import ProgressBar from "../components/ProgressBar";
 import { useProgress } from "../hooks/useProgress";
 
@@ -6,6 +7,24 @@ const DSA = lazy(() => import("./DSA"));
 
 export default function Grid() {
   const { completed, total } = useProgress();
+  const queryClient = useQueryClient();
+  const { data: theme = 'light' } = useQuery({
+    queryKey: ['theme'],
+    initialData: 'light',
+    queryFn: async () => 'light',
+  });
+
+
+  const handleToggleDark = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    queryClient.setQueryData(['theme'], newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
 
   return (
     <Suspense fallback={<div className="text-lg grid place-items-center">Loading...</div>}>
@@ -14,9 +33,7 @@ export default function Grid() {
         <h1 className="text-2xl font-bold text-center w-full">Data Structures and Algorithms</h1>
         <button
           className="ml-4 px-3 py-1 rounded bg-gray-700 text-white hover:bg-gray-900 transition"
-          onClick={() => {
-            document.documentElement.classList.toggle('dark');
-          }}
+          onClick={handleToggleDark}
         >
           Toggle Dark Mode
         </button>

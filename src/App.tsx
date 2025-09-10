@@ -1,5 +1,6 @@
 import './styles/index.css';
 import { Suspense, lazy } from 'react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { BrowserRouter, Route, Routes, } from "react-router-dom";
 
 const Grid = lazy(() => import('./components/Grid'));
@@ -14,7 +15,37 @@ const Set = lazy(() => import('./pages/set'));
 const Trie = lazy(() => import('./pages/trie'));
 
 
-export default function App() {
+declare global {
+  interface Window {
+    toggleDarkMode: () => void;
+  }
+}
+function App() {
+  const queryClient = useQueryClient();
+  const { data: theme = 'light' } = useQuery({
+    queryKey: ['theme'],
+    initialData: 'light',
+    queryFn: async () => {
+      const persisted = localStorage.getItem('theme') || 'light';
+      if (persisted === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      return persisted;
+    },
+  });
+
+  window.toggleDarkMode = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    queryClient.setQueryData(['theme'], newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
 
   return (
     <Suspense fallback={<div className="text-lg grid place-content-center">Loading</div>}>
@@ -35,3 +66,4 @@ export default function App() {
     </Suspense>
   );
 }
+export default App;

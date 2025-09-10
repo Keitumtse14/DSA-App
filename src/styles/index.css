@@ -15,10 +15,33 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+
 body {
   background-image: linear-gradient(to right, #123a83, #015c92);
   line-height: 1.7;
   font-weight: 100;
+}
+
+.dark body {
+  background-image: linear-gradient(to right, #18181b, #1e293b);
+  color: #e5e7eb;
+}
+
+#root {
+  color: white;
+}
+
+.dark #root {
+  color: #e5e7eb;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: clamp(1rem, 1rem + 5vw, 2.5rem);
+}
+
+.dark h1 {
+  color: #e5e7eb;
 }
 
 h1 {

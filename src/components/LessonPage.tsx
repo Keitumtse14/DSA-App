@@ -34,7 +34,9 @@ export default function LessonPage({ lessonKey, title, content }: LessonPageProp
             </ul>
 
             <Link to="/" className="inline-block mt-4">
-                <img src={BackButton} alt="Back" className="w-10 hover:scale-110 transition" />
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow border border-gray-300 dark:border-gray-700 transition-transform hover:scale-110 hover:bg-blue-100 dark:hover:bg-blue-900">
+                    <img src={BackButton} alt="Back" className="w-6 h-6 dark:filter dark:invert" />
+                </span>
             </Link>
 
             {showToast && (
